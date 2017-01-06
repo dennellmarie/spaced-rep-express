@@ -13,7 +13,7 @@ var questionsSchema = new mongoose.Schema({
 		type: Number,
 		required: true
 	}
-})
+});
 
 var Questions = mongoose.model('Questions', questionsSchema);
 module.exports = Questions;

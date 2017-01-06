@@ -22,11 +22,11 @@ var jsonParser = bodyParser.json();
 
 passport.serializeUser(function(user, done) {
 	done(null, user)
-})
+});
 
 passport.deserializeUser(function(user, done) {
 	done(null, user);
-})
+});
 
 passport.use(new Strategy(
   function(token, done) {
@@ -39,10 +39,6 @@ passport.use(new Strategy(
 ));
 
 app.use(passport.initialize());
-
-// app.get('/*', function (req, res) {
-//    res.sendFile(path.join(__dirname, './build', 'index.html'));
-//  });
 
 app.get('/question', passport.authenticate('bearer', { session: false }), function(req, res) {
 	var accessToken = req.headers.authorization.split(' ')[1]
@@ -57,9 +53,9 @@ app.get('/question', passport.authenticate('bearer', { session: false }), functi
 				return res.status(500).json('Internal Server Error')
 			}
 			return res.status(200).json(newQuestion)
-		})
-	})
-})
+		});
+	});
+});
 
 app.put('/question', jsonParser, passport.authenticate('bearer', { session: false }), function(req, res) {
 	var accessToken = req.headers.authorization.split(' ')[1]
@@ -104,13 +100,14 @@ app.put('/question', jsonParser, passport.authenticate('bearer', { session: fals
 							res.status(500).json('Question db error')
 						}
 						res.status(200).json(question)
-					})
+					});
 				}
-			})
-		})
-	})
-})
+			});
+		});
+	});
+});
 
+// ----authentication for live version----
 // var google = require('googleapis');
 // var OAuth2 = google.auth.OAuth2;
 

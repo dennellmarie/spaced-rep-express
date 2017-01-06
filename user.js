@@ -12,7 +12,7 @@ var userSchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.Mixed,
 		required: true
 	}
-})
+});
 
 var User = mongoose.model('User', userSchema);
 module.exports = User;
